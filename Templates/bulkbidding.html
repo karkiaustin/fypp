@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="headdd">
+        <div class="rrr">
+            <div class="q">
+                <h2>Dreamy Drive</h2>
+            </div>
+            <div class="search">
+                   <form action="/search" method="GET">
+                        <input class="ccss" name="query" type="text" placeholder="Search Here!!">
+                        <button class="ccsss" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+            </div>
+            <div class="q">
+                <p>Contact: <a href="tel:9804335733">9804335733</a></p>
+                <p>Email: <a
+                        href="mailto:austinkarki2058@gmail.com?subject=contact&body=write here">austinkarki2058@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="backkkk">
+            <div class="bobo"><br><br>
+                <h1 class="ppz">Requirements List:</h1><br>
+                <!-- post of the requirement -->
+                <div class="bulkk"><br>
+                    <h3>Name: Name</h3>
+                    <h3>Required Date: Date</h3>
+                    <h3>Requirement Detail:</h3><br>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ad tempore amet dolorum
+                        consequuntur perferendis nam aperiam voluptatem consectetur, excepturi esse qui odit sit omnis
+                        quo ea voluptate modi soluta?</p><br><br><hr><br>
+                        <h3>Comments:</h3><br>
+                        <!-- comment section -->
+                        <div>
+                           <p>kkjkdkdkdkdkddkdk</p><br><br>
+                           <button class="box2" type="button">Conform</button>
+
+
+                            <br><br><hr><br>
+                        </div>
+                        <div>
+                            <p>kkjkdkdkdkdkddkdk</p><br><br>
+                            <button class="box2" type="button">Conform</button>
+ 
+ 
+                             <br><br><hr><br>
+                         </div>
+                         <div>
+                            <p>kkjkdkdkdkdkddkdk</p><br><br>
+                            <button class="box2" type="button">Conform</button>
+ 
+ 
+                             <br><br><hr><br>
+                         </div>
+
+                    <br>
+                    
+                </div>
+                
+                <br>
+
+                <div class="tyu">
+                    <h2>Bulk Requirements:</h2><br><br>
+                    <form>
+                        Name:&nbsp;&nbsp;<input class="cc" type="text" placeholder="Name"
+                            required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Email:&nbsp;&nbsp;<input class="cc" type="email" placeholder="Email"
+                            required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+                        Phone:&nbsp;&nbsp;<input class="cc" type="text" placeholder="Phone Number"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" maxlength="10"
+                            title="Please enter a 10-digit phone number"
+                            required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Date:&nbsp;&nbsp;<input class="cc" type="date"
+                            required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Requirements Detail:&nbsp;&nbsp;<textarea id="message" rows="6" cols="42"
+                            placeholder="Write the requirements Here!!" required></textarea><br><br><br>
+                        <button type="submit" class="box2">Submit <i
+                                class="fa-solid fa-square-check"></i></button>&nbsp;&nbsp;&nbsp;
+                        <button type="reset" class="box2">Reset <i class="fa-solid fa-power-off"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

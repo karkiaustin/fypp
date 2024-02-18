@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="headdd">
+        <div class="rrr">
+            <div class="q">
+                <h2>Dreamy Drive</h2>
+            </div>
+            <div class="search">
+               <form action="/search" method="GET">
+                    <input class="ccss" name="query" type="text" placeholder="Search Here!!">
+                    <button class="ccsss" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div class="q">
+                <p>Contact: <a href="tel:9804335733">9804335733</a></p>
+                <p>Email: <a
+                        href="mailto:austinkarki2058@gmail.com?subject=contact&body=write here">austinkarki2058@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="backkkk">
+            <div class="innboxxxy">
+                <h1><br>&nbsp;&nbsp;&nbsp;&nbsp;Vehicles:</h1><br>
+                <div class="bbooxx">
+                    <!-- service vehicle -->
+
+                {% if search_vehicle %}
+                    {% for cat in search_vehicle %}
+                    <div class="inboiii">
+                        <img src="{{cat.image.url}}" alt="" height="75%" width="100%">
+                        <div class="center">
+                            <h3>{{cat.name}}</h3>
+                        </div><br>
+                        <div class="center">
+                            <p>Price= Rs{{cat.price_per_day}} per day &nbsp; &nbsp;<br><br><button class="box2" type="button"><a href="/detail/{{cat.slug}}">More
+                                    Detail</a></button> </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <center><strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No &nbsp;result &nbsp;Found &nbsp;!!  &nbsp;Try &nbsp;another &nbsp;Keyword.<br><br><br></strong></center>
+                    {% endif %}
+
+                </div><br>
+            </div>
+        </div>
+{% endblock %}

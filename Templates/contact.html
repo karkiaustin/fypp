@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="backkk">
+            <div class="conbox"><br>
+                <div>
+                    <br>
+                    <h2> &nbsp;&nbsp;Frequently Asked Question:</h2><br>
+                    <div class="center">
+                        <table border="8px">
+                            <tr>
+                                <td>What are the payment Option?</td>
+                                <td>We accept online transaction and also cash on delivery.</td>
+                            </tr>
+                            <tr>
+                                <td>Are there any booking Charger?</td>
+                                <td>No, we dont charge any booking fee or charges.</td>
+                            </tr>
+                            <tr>
+                                <td>How do i cancel booking?</td>
+                                <td>You can cancel the booking by contacting our customer support team.</td>
+                            </tr>
+                            <tr>
+                                <td>What if my driver doesn't show up?</td>
+                                <td>In the unlikely event that your driver doesn't show up, please contact out customer
+                                    support.</td>
+                            </tr>
+                            <tr>
+                                <td>What if my driver misbehave or doesn't complete the ride?</td>
+                                <td>In such case you can directly contact the customer service and report a problem and
+                                    you will be refunded.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div><br><br>
+
+                <div>
+                    <h2>&nbsp;&nbsp;&nbsp;Join Our Team:</h2>
+                </div><br><br>
+                <div class="mid">
+                    <div class="logbo"><br>
+                        <h2 class="center">
+                            Company Registration Form
+                        </h2>
+                        <form method="POST" class="formm" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for message in messages%}
+                            {% if message.tags == 'error' %}
+                            <font color="red"><strong><center>{{ message }}</center></strong></font>
+                            {% elif message.tags == 'success' %}
+                            <font color="#FCFF33"><strong><center>{{ message }}</center></strong></font>
+                            {% endif %}
+                            {% endfor %}<br>
+                            &nbsp;<label for="c">First Name *:
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input
+                                class="cc" type="text" name="sfname" id="c" placeholder="First Name" required><br><br>
+                            &nbsp;<label for="d">Last Name *:
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input
+                                class="cc" type="text" name="slname" id="d" placeholder="Last Name" required><br><br>
+                            &nbsp;<label for="e">Email *:
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input
+                                class="cc" type="email" name="semail" id="e" placeholder="Email" required><br><br>
+                            &nbsp;<label for="z">Company Name *: &nbsp;&nbsp;&nbsp;</label><input class="cc" type="text"
+                                name="Cname" id="z" placeholder="Company Name" required><br><br>
+                            &nbsp;<label for="a">Username
+                                *:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;</label><input class="cc" type="text" autofocus name="susername" id="a"
+                                autofocus="" placeholder="User Name" required><br><br>
+                            &nbsp;<label for="b">Password *: </label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                                class="cc" type="password" placeholder="Password" name="spassword" id="b" required>
+                            <button class="a box1" type="button" onclick="togglePasswordVisibility('logbo')">
+                                SHOW
+                            </button>
+                            <br><br>
+                            &nbsp;Company Register Document *: <input type="file" name="Cdocument" accept="image/*"
+                                required> <br><br>
+                            &nbsp;Citizenship Document *: <input type="file" name="Scitizenship" accept="image/*" required>
+                            <br><br>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button class="box2" type="submit"><strong>Submit <i
+                                        class="fa-solid fa-square-check"></i></strong></button><strong> <button
+                                    class="box2" type="reset"><strong>Reset <i
+                                            class="fa-solid fa-power-off"></i></strong></button>
+                        </form>
+                        <br><br>
+                    </div>
+
+                    <div class="move"><img
+                            src="https://ssm.bigbrothersbigsisters.ca/wp-content/uploads/sites/227/2022/07/Join-our-Team.jpg"
+                            alt="logo" height="660px" width="600px"></div>
+                </div><br>
+                <hr><br>
+
+
+                <h2 class="center">
+                    Contact Us:
+                </h2><br>
+                <div class="center">
+                    <p>Do you have any question or feedback? We'd love to hear from you! Contact us via phone, email, or
+                        social media</p>
+                </div><br>
+                <div class="centerr">
+                    <table>
+                        <tr>
+                            <td>Phone:</td>
+                            <td>Email:</td>
+                            <td>Social Media:</td>
+                        </tr>
+                        <tr>
+                            <td>9804335733</td>
+                            <td>austinkarki2058@gmail.com</td>
+                            <td>1. Facebook <i
+                                class="fa-brands fa-square-facebook"></i><br><br>2 Instagram <i
+                                class="fa-brands fa-square-instagram"></i></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="bacck">
+            <div class="logboxx">
+                <br>
+                <h1 class="center">
+                    Create Account
+                </h1>
+                <form method="POST" class="formm">
+                    {% csrf_token %}
+                    {% for message in messages%}
+                        {% if message.tags == 'error' %}
+                            <font color="red"><strong><center>{{ message }}</center></strong></font>
+                        {% elif message.tags == 'success' %}
+                            <font color="#FCFF33"><strong><center>{{ message }}</center></strong></font>
+                        {% endif %}
+                    {% endfor %}<br>
+                    <label for="c">First Name: &nbsp;&nbsp;&nbsp;</label><input class="cc" type="text" name="fname"
+                        id="c" placeholder="First Name" required><br><br>
+                    <label for="d">Last Name: &nbsp;&nbsp;&nbsp;</label><input class="cc" type="text" name="lname"
+                        id="d" placeholder="Last Name" required><br><br>
+                    <label for="e">Email:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input
+                        class="cc" type="email" name="email" id="e" placeholder="Email" required><br><br>
+                    <label for="a">Username: &nbsp;&nbsp;&nbsp;</label><input class="cc" type="text" autofocus
+                        name="username" id="a" autofocus="" placeholder="User Name" required><br><br>
+                    <label for="b">Password: </label> &nbsp;&nbsp;&nbsp;<input class="cc op" type="password"
+                        placeholder="Password" name="password" id="b" required>
+                     <button class="aaa box1" type="button" onclick="PasswordVisibility()">
+                        SHOW </button>
+                    <br><br>
+                    <label for="opp">Conform Password: </label> <input class="cc op" type="password"
+                        placeholder="Conform Password" name="cpassword" id="opp" required><br><br>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp;<button class="box2"><strong>Submit <i
+                                class="fa-solid fa-square-check"></i></strong></button><strong> <button class="box2"
+                            type="reset"><strong>Reset <i class="fa-solid fa-power-off"></i></strong></button>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}

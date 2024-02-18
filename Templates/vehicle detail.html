@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="headdd">
+        <div class="rrr">
+            <div class="q">
+                <h2>Dreamy Drive</h2>
+            </div>
+              <div class="search">
+                   <form action="/search" method="GET">
+                        <input class="ccss" name="query" type="text" placeholder="Search Here!!">
+                        <button class="ccsss" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            <div class="q">
+                <p>Contact: <a href="tel:9804335733">9804335733</a></p>
+                <p>Email: <a
+                        href="mailto:austinkarki2058@gmail.com?subject=contact&body=write here">austinkarki2058@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="backkkk">
+            <div class="innboxxxy">
+                {% for veh in vehicle_detail %}
+                <div class="babybox">
+                    <div>
+                        <div class="boob">
+                            <img src="{{veh.image.url}}" alt="">
+                        </div>
+                    </div>
+                    <div class="iiiii">
+                        <h1>{{veh.name}}</h1>
+
+                        <br>
+                        <h2>Price per day: {{veh.price_per_day}}</h2><br>
+                        <h2>Company Name: {{veh.Company_name}}</h2><br>
+                        <h2>Company Contact: {{veh.Company_contact}}</h2><br>
+                        <h2>Vehicle Number: {{veh.Vehicle_number}}</h2><br>
+                        <h2>Color: {{veh.color}}</h2><br>
+                        <h2>mileage: {{veh.mileage}}km/ltr</h2><br>
+                        <h2>Engine Type: {{veh.engine_type}}</h2><br>
+                        <button class="box3" type="button" onclick="ty()"><strong>Rent Now!! <i
+                                    class="fa-solid fa-truck-moving"></i></strong></button>
+                    </div>
+
+                </div>
+                <hr>
+                <hr>
+                <hr>
+
+                <div class="babyboxx">
+                    <div class="middd">
+                        <h1>Vehicle Description:</h1><br>
+                        <p>{{veh.vehicle_description}}</p><br>
+                        <br>
+                        <button class="box3" onclick="vd()" type="button">Vehicle Specification!! <i
+                                class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                    <div class="op">
+                        <img src="{% static 'img/specification.png' %}" alt="" width="600px" height="450px">
+                    </div>
+                </div>
+                <div class="mii">
+                    <div class="midddd">
+                        <h1>Vehicle Specification:</h1><br>
+                        <p>{{veh.vehicle_specification}}</p><br>
+                        <button class="box3" type="button" onclick="vid()">Vehicle Description!! <i
+                                class="fa-solid fa-arrow-left"></i></button>
+                    </div>
+    </div>
+                <hr><br>
+                <h2><center><u>Review Of Customers:</u></center></h2>
+                {% for rr in review %}
+                <div class="review">
+                    <div class="bulkk"><br>
+                        <h3>Name: {{rr.username}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{rr.date}}</h3>
+                        <div class="rating">
+                            {% for i in 1|ljust:rr.star %}
+                            <i class="fa-solid fa-star"></i>
+                            {% endfor %}
+                        </div><br>
+                        <p>{{rr.review}}</p><br><hr>
+                    </div>
+                    </div>
+                {% endfor %}
+                <br>
+
+                {% if user.is_authenticated%}
+                    <div class="tyu, bulkk">
+                        <h2>Give Your Review:</h2><br>
+                        <form method="POST" action="/vehicle_review/{{veh.slug}}">
+                            {% csrf_token %}
+                             <label for="stars">Give Rating:</label>
+
+                            <select name="star" id="stars" >
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+
+                            </select><br><br>
+                            Review:&nbsp;&nbsp;<textarea id="message" rows="5" cols="60"
+                                placeholder="Write your Review Here!!" required name="comment"></textarea><br><br><br>
+                            <button type="submit" class="box2">Submit <i
+                                    class="fa-solid fa-square-check"></i></button>&nbsp;&nbsp;&nbsp;
+                            <button type="reset" class="box2">Reset <i class="fa-solid fa-power-off"></i></button><br><br>
+                        </form>
+                    </div>
+                {% endif %}
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="mm">
+        <h1>Terms and Condition:</h1><br>
+        <p>1. {{veh.TermsCondition2}}</p><br>
+        <p>2. {{veh.TermsCondition2}}</p><br>
+        <p>3. {{veh.TermsCondition3}}</p><br>
+        <p>4. {{veh.TermsCondition4}}</p><br>
+        <p>5. {{veh.TermsCondition5}}</p><br>
+        <p>6. {{veh.TermsCondition6}}</p><br>
+        <p>7. {{veh.TermsCondition7}}</p><br>
+        {% if user.is_authenticated %}
+        <button class="box2" type="button"><a href="/checkout">Confirm <i class="fa-solid fa-square-check"></i></a></button> &nbsp; &nbsp;
+        {% else %}
+        <button class="box2" type="button"><a href="/signup">Confirm <i class="fa-solid fa-square-check"></i></a></button> &nbsp; &nbsp;
+        {% endif %}
+        &nbsp;<button type="button" class="box2" onclick="asd()">Cancel <i class="fa-solid fa-xmark"></i></button>
+    </div>
+    {% endfor %}
+{% endblock %}
+    <!-- Footer -->

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="backkkk"><br><br>
+            <div class="conbokx">
+                <h1 class="center">
+                    <br>Dreamy Drive:
+                </h1><br>
+                <p class="ll center">
+                    Embark on a revolutionary journey in the world of car rentals with our groundbreaking
+                        platform. We're dedicated to redefining the traditional rental experience by infusing technology
+                        with an unwavering commitment to your comfort and convenience. At our core, we prioritize your
+                        needs, ensuring that every interaction with our platform is seamless and empowering. Our
+                        user-centric approach guarantees an effortless process from the moment you begin browsing to the
+                        final booking stage. What truly sets us apart is our innovative bidding system, offering you an
+                        unprecedented level of control and personalization over your rental choices.<br><br>
+
+                        Transparency and clarity are our guiding principles—we provide a transparent pricing structure
+                        and unwavering customer support throughout your rental journey. Our passion extends beyond
+                        offering a service; it's about fostering a community around automobile leasing in Nepal. By
+                        incorporating the latest advancements in technology, we promise an experience that's not just
+                        about renting a car but embracing a lifestyle of convenience and choice. Join us in this
+                        transformative journey where every rental becomes an adventure, and every interaction with our
+                        platform is a testament to innovation, reliability, and empowerment.
+                </p>
+
+            </div><br><br>
+
+            <div class="inboxx">
+                <h1 class="center"><br>
+                    About Us:
+                </h1>
+                <h4 class="ll"><br>We are a team of dedication professionals who have been in the vehicle rental
+                    industry for several years.Our main goal is to provide a seamless and hassle-free experience to our
+                    customers.</h4><br>
+                <div class="booxx">
+                    <div class="inboi">
+                        <img src="{% static 'img/team.png' %}" alt="" height="75%" width="100%">
+                        
+                            <h3 class="center">Our Team:</h3>
+                        <br>
+                       
+                            <p class="center">Our team is passionate about providing the best customer experience possible..</p>
+                        
+                    </div>
+                    <div class="inboi">
+                        <img src="{% static 'img/office.png' %}" alt="" height="75%" width="100%">
+                        
+                            <h3 class="center">Our Office:</h3>
+                        <br>
+                        
+                            <p class="center">Our office is located in the heart of the city, with easy access to all model of
+                                transportation.</p>
+                        
+                    </div>
+                    <div class="inboi">
+                        <img src="{% static 'img/support.png' %}" alt="" height="75%" width="100%">
+                        
+                            <h3 class="center">Customers Support:</h3>
+                        <br>
+                        
+                            <p class="center">We are available 24/7 to provide customer support and assistance with bookings.</p>
+                        
+                    </div>
+                </div>
+
+
+            </div><br>
+            <div class="inboxxx">
+                <h1 class="center"><br>
+                    Our Team:
+                </h1>
+                <h4 class="ll"><br>Our team comprises a collective of passionate individuals driven by a shared
+                    vision—to revolutionize the vehicle rental landscape in Nepal. Each member brings a unique set of
+                    skills and expertise, combining innovation with a deep understanding of customer needs. From
+                    seasoned developers crafting intuitive interfaces to customer service experts dedicated to ensuring
+                    your satisfaction, our diverse team collaborates seamlessly to create a platform that redefines car
+                    rentals.</h4><br>
+                <div class="bbooxx">
+                    <!-- Our team -->
+                    {% for team in member %}
+                    <div class="inboii">
+                        <img src="{{team.image.url}}" alt="" height="60%" width="100%">
+                        <div class="center">
+                            <h3>{{team.post}}: {{team.name}}</h3>
+                        </div><br>
+                        <div class="center">
+                            <p>{{team.review}}
+
+                                </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div><br>
+        </div>
+    </div>
+{% endblock %}
