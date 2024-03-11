@@ -1,0 +1,84 @@
+{% extends 'admin/admin-base.html' %} {% load static %} {% block content %}
+<div class="headdd">
+  <div class="rrr">
+    <div class="q">
+      <h2>Dreamy Drive</h2>
+    </div>
+    <div class="search">
+      <form action="/search" method="GET">
+        <input
+          class="ccss"
+          name="query"
+          type="text"
+          placeholder="Search Here!!"
+        />
+        <button class="ccsss" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+    <div class="q">
+      <p>Contact: <a href="tel:9804335733">9804335733</a></p>
+      <p>
+        Email:
+        <a
+          href="mailto:austinkarki2058@gmail.com?subject=contact&body=write here"
+          >austinkarki2058@gmail.com</a
+        >
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="backkkk">
+    <div class="bobo">
+      <br /><br />
+      <h1 class="ppz">Requirements List:</h1>
+      <br />
+      <!-- post of the requirement -->
+      {%  for req in data %}
+      <div class="bulkk">
+        <br />
+        <h3>Name: {{req.user.first_name}}</h3>
+        <h3>Required Date: {{req.date}}</h3>
+        <h3>Requirement Detail:</h3>
+        <br />
+        <p>
+          {{req.requirements}}
+        </p>
+        <br /><br />
+        <hr />
+        <br />
+        <h3>Comment:</h3>
+        <br />
+
+        <br />
+        <form method="post">
+          {%csrf_token%}
+        Comments:&nbsp;&nbsp;<textarea
+          id="message"
+          rows="6"
+          cols="42"
+          name="text"
+          placeholder="Write the comments Here!!"
+          required
+        ></textarea
+        >
+        <input type="hidden" id="postId" name="id" value={{req.id}}>
+        <br /><br /><br />
+        <button type="submit" class="box2">
+          Submit <i class="fa-solid fa-square-check"></i></button
+        >&nbsp;&nbsp;&nbsp;
+    </form>
+      </div>
+      {%endfor%}
+
+      <br />
+
+      
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

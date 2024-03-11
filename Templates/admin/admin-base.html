@@ -22,58 +22,26 @@
             </div>
             <div class="headd">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/adminhome">BulkBidding</a></li>
+                    <li><a href="/adminbooking">Bookings</a></li>
+                    <li><a href="/addvehicle">Add Vehicle</a></li>
                     {% if user.is_authenticated %}
                     <li><button class="box1"><strong><a href="{% url 'logout' %}">Logout<i
                                         class="fa-solid fa-right-to-bracket"></i></a></strong></button>
                     </li>
                         <li><button class="box2"><strong><a href="/my_account">Account <i class="fa-solid fa-user"></i></a></strong></button></li>
-                        {% else %}
-                        <button class="box1"><strong><a href="/account/login">Login<i
-                                        class="fa-solid fa-right-to-bracket"></i></a></strong></button>
-                        <li><button class="box2"><strong><a href="/signup">Register <i
-                                        class="fa-solid fa-registered"></i></a></strong></button></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </header>
+        {% block content %}
 
-    <div class="container">
-        <div class="bacck">
-            <div class="logbox">
-                <br>
-                <h1 class="center">
-                    LOG IN 
-                </h1>
-                <form class="formm" method="POST">
-                    {% csrf_token %}
-                    <h2><label for="a">Username:
-                    </label></h2><br>
-<!--                    <input class="cc" type="text" name="name" id="a"-->
-<!--                        autofocus="" placeholder="User Name">-->
-                    {{form.username}}
-                    <br><br>
-                    <h2><label for="b">Password:
-                    </label></h2><br>
-<!--                    <input class="cc ppp" type="password"-->
-<!--                        placeholder="Password" name="password" id="b">-->
-                    {{ form.password }}
-                    <br><br><br>
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button
-                        class="box2"><strong>Submit <i class="fa-solid fa-square-check"></i></strong></button><strong>
-                        <button class="box2" type="reset"nn><strong>Reset <i
-                                    class="fa-solid fa-power-off"></i></strong></button>
-                </form>
-            </div>
+        {% endblock %}
 
 
-        </div>
 
-        <footer class="contain">
+   <footer class="contain">
         <div class="foot">
             <h2 class="ff">Rent Your Vehicle Now::</h2>
             <div class="fut">
@@ -92,17 +60,22 @@
                     <h3>More::</h3><br>
                     <ul>
                         <li><a href="index.html">Home <i class="fa-solid fa-house"></i></a></li><br>
-                        <li><a href="Blog.html">Blog <i class="fa-solid fa-blog"></i></a></li><br>
-                        <li><a href="contact.html">Contact <i class="fa-solid fa-address-book"></i></a></li><br>
+                        
                     </ul>
                 </div>
-
+                <div class="footerr">
+                    <h3>Services:</h3><br>
+                    <ul>
+                        <li><a href="/bulkbidding">BulkBidding <i class="fa-solid fa-taxi"></i></a></li>
+                       
+                    </ul>
+                </div>
                 <div class="footerr">
                     <h3>We are just a call away::</h3><br>
                     <ul>
-                        <li><a href="signup.html" class="cccc">Register&nbsp;<i class="fa-solid fa-registered"></i></li>
+                        <li><a href="/signup" class="cccc">Register&nbsp;<i class="fa-solid fa-registered"></i></li>
                         </a><br>
-                        <li><a href="login.html" class="cccc">Login&nbsp;<i
+                        <li><a href="/login" class="cccc">Login&nbsp;<i
                                     class="fa-solid fa-right-to-bracket"></i></a></li>
                     </ul><br>
                     <h3>Have a Lovely Day!! <img src="{% static 'img/logo.png' %}" width="100px" height="60px"></h3>

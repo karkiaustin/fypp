@@ -11,4 +11,6 @@ admin.site.register(vehicle)
 admin.site.register(staff)
 admin.site.register(checkout)
 admin.site.register(User_review)
+admin.site.register(bulkbidding)
+admin.site.register(comment)
 

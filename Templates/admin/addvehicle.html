@@ -1,0 +1,44 @@
+{% extends 'admin/admin-base.html' %} {% load static %} {% block content %}
+<div class="headdd">
+  <div class="rrr">
+    <div class="q">
+      <h2>Dreamy Drive</h2>
+    </div>
+    <div class="search">
+      <form action="/search" method="GET">
+        <input
+          class="ccss"
+          name="query"
+          type="text"
+          placeholder="Search Here!!"
+        />
+        <button class="ccsss" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+    <div class="q">
+      <p>Contact: <a href="tel:9804335733">9804335733</a></p>
+      <p>
+        Email:
+        <a
+          href="mailto:austinkarki2058@gmail.com?subject=contact&body=write here"
+          >austinkarki2058@gmail.com</a
+        >
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="backkkk">
+    <div class="bobo">
+      <h1>Create Vehicle</h1>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -27,57 +27,47 @@
             <div class="bobo"><br><br>
                 <h1 class="ppz">Requirements List:</h1><br>
                 <!-- post of the requirement -->
+                {%for d in data %}
                 <div class="bulkk"><br>
-                    <h3>Name: Name</h3>
-                    <h3>Required Date: Date</h3>
+                    <h3>Name: {{d.user.first_name}}</h3>
+                    <h3>Required Date: {{d.date}}</h3>
                     <h3>Requirement Detail:</h3><br>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ad tempore amet dolorum
-                        consequuntur perferendis nam aperiam voluptatem consectetur, excepturi esse qui odit sit omnis
-                        quo ea voluptate modi soluta?</p><br><br><hr><br>
+                    <p>{{d.requirements}}</p><br><br><hr><br>
                         <h3>Comments:</h3><br>
                         <!-- comment section -->
-                        <div>
-                           <p>kkjkdkdkdkdkddkdk</p><br><br>
-                           <button class="box2" type="button">Conform</button>
+                        
+                        {%for a in comments%}
+                        {%if a.bid.id == d.id%}
+                            <div>
+                            <h3>Bidder: {{a.user.first_name}}</h3>
+                            <p>{{a.text}}</p><br><br>
+                            <a href="{% url 'bidconfirm' id=d.id%}"> <button class="box2" type="button">Confirm</button> </a>
+                            
 
 
-                            <br><br><hr><br>
-                        </div>
-                        <div>
-                            <p>kkjkdkdkdkdkddkdk</p><br><br>
-                            <button class="box2" type="button">Conform</button>
- 
- 
-                             <br><br><hr><br>
-                         </div>
-                         <div>
-                            <p>kkjkdkdkdkdkddkdk</p><br><br>
-                            <button class="box2" type="button">Conform</button>
- 
- 
-                             <br><br><hr><br>
-                         </div>
-
+                                <br><br><hr><br>
+                            </div>
+                            {%endif%}
+                        {%endfor%}
+                        
                     <br>
                     
                 </div>
+                {%endfor%}
                 
                 <br>
 
                 <div class="tyu">
                     <h2>Bulk Requirements:</h2><br><br>
-                    <form>
-                        Name:&nbsp;&nbsp;<input class="cc" type="text" placeholder="Name"
-                            required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Email:&nbsp;&nbsp;<input class="cc" type="email" placeholder="Email"
-                            required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
-                        Phone:&nbsp;&nbsp;<input class="cc" type="text" placeholder="Phone Number"
+                    <form method="post">
+                        {%csrf_token%}
+                        Phone:&nbsp;&nbsp;<input class="cc" type="text" name="phone" placeholder="Phone Number"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" maxlength="10"
                             title="Please enter a 10-digit phone number"
                             required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Date:&nbsp;&nbsp;<input class="cc" type="date"
+                        Date:&nbsp;&nbsp;<input class="cc" name="date" type="date"
                             required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Requirements Detail:&nbsp;&nbsp;<textarea id="message" rows="6" cols="42"
+                        Requirements Detail:&nbsp;&nbsp;<textarea id="message" name="requirements" rows="6" cols="42"
                             placeholder="Write the requirements Here!!" required></textarea><br><br><br>
                         <button type="submit" class="box2">Submit <i
                                 class="fa-solid fa-square-check"></i></button>&nbsp;&nbsp;&nbsp;
@@ -87,4 +77,5 @@
             </div>
         </div>
     </div>
+    
 {% endblock %}

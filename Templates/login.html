@@ -24,15 +24,6 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About</a></li>
-                    <li><a href="">Services</a>
-                        <div class="down">
-                            <p class="nn"><a href="/bulkbidding">BulkBidding</a></p>
-                            {% for cat in category %}
-                            <p class="nn"><a href="/category/{{cat.slug}}">{{cat.name}}</a></p>
-                            {% endfor %}
-
-                        </div>
-                    </li>
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/blog">Blog</a></li>
                     {% if user.is_authenticated %}
@@ -50,13 +41,37 @@
             </div>
         </div>
     </header>
-        {% block content %}
 
-        {% endblock %}
+    <div class="container">
+        <div class="bacck">
+            <div class="logbox">
+                <br>
+                <h1 class="center">
+                    LOG IN 
+                </h1>
+                <form class="formm" method="POST">
+                    {% csrf_token %}
+                    <h2><label for="a">Username:
+                    </label></h2><br>
+                   <input class="cc" type="text" name="username" id="a" autofocus="" placeholder="User Name">
+                    
+                    <br><br>
+                    <h2><label for="b">Password:
+                    </label></h2><br>
+                   <input class="cc ppp" type="password" placeholder="Password" name="password" id="b">
+                    
+                    <br><br><br>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button
+                        class="box2"><strong>Submit <i class="fa-solid fa-square-check"></i></strong></button><strong>
+                        <button class="box2" type="reset"nn><strong>Reset <i
+                                    class="fa-solid fa-power-off"></i></strong></button>
+                </form>
+            </div>
 
 
+        </div>
 
-   <footer class="contain">
+        <footer class="contain">
         <div class="foot">
             <h2 class="ff">Rent Your Vehicle Now::</h2>
             <div class="fut">
@@ -79,21 +94,13 @@
                         <li><a href="contact.html">Contact <i class="fa-solid fa-address-book"></i></a></li><br>
                     </ul>
                 </div>
-                <div class="footerr">
-                    <h3>Services:</h3><br>
-                    <ul>
-                        <li><a href="/bulkbidding">BulkBidding <i class="fa-solid fa-taxi"></i></a></li>
-                        {% for cat in category %}
-                        <li><a href="">{{cat.name}}<i class="fa-solid fa-taxi"></i></a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
+
                 <div class="footerr">
                     <h3>We are just a call away::</h3><br>
                     <ul>
-                        <li><a href="/signup" class="cccc">Register&nbsp;<i class="fa-solid fa-registered"></i></li>
+                        <li><a href="signup.html" class="cccc">Register&nbsp;<i class="fa-solid fa-registered"></i></li>
                         </a><br>
-                        <li><a href="/login" class="cccc">Login&nbsp;<i
+                        <li><a href="login.html" class="cccc">Login&nbsp;<i
                                     class="fa-solid fa-right-to-bracket"></i></a></li>
                     </ul><br>
                     <h3>Have a Lovely Day!! <img src="{% static 'img/logo.png' %}" width="100px" height="60px"></h3>
