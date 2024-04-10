@@ -39,7 +39,6 @@
                         <h2>Price per day: {{veh.price_per_day}}</h2><br>
                         <h2>Company Name: {{veh.Company_name}}</h2><br>
                         <h2>Company Contact: {{veh.Company_contact}}</h2><br>
-                        <h2>Vehicle Number: {{veh.Vehicle_number}}</h2><br>
                         <h2>Color: {{veh.color}}</h2><br>
                         <h2>mileage: {{veh.mileage}}km/ltr</h2><br>
                         <h2>Engine Type: {{veh.engine_type}}</h2><br>
@@ -92,7 +91,7 @@
                 {% if user.is_authenticated%}
                     <div class="tyu, bulkk">
                         <h2>Give Your Review:</h2><br>
-                        <form method="POST" action="/vehicle_review/{{veh.slug}}">
+                        <form method="POST" action="/vehicle_review/{{veh.slug}}/">
                             {% csrf_token %}
                              <label for="stars">Give Rating:</label>
 
@@ -124,20 +123,26 @@
 
     <div class="mm">
         <h1>Terms and Condition:</h1><br>
-        <p>1. {{veh.TermsCondition2}}</p><br>
-        <p>2. {{veh.TermsCondition2}}</p><br>
-        <p>3. {{veh.TermsCondition3}}</p><br>
-        <p>4. {{veh.TermsCondition4}}</p><br>
-        <p>5. {{veh.TermsCondition5}}</p><br>
-        <p>6. {{veh.TermsCondition6}}</p><br>
-        <p>7. {{veh.TermsCondition7}}</p><br>
+        {% load custom_filters %}
+
+{% for number, item in veh.TermsCondition1|enumerate_and_split %}
+    <p>{{ number }}. {{ item }}</p>
+{% endfor %}
+        
+
+        
         {% if user.is_authenticated %}
-        <button class="box2" type="button"><a href="/checkout">Confirm <i class="fa-solid fa-square-check"></i></a></button> &nbsp; &nbsp;
+        <form action="/startcheckout/{{ veh.id }}/" method="post">
+            {% csrf_token %}
+            <button class="box2" type="submit">Confirm <i class="fa-solid fa-square-check"></i></button>&nbsp; &nbsp;
+        </form>
+        
         {% else %}
         <button class="box2" type="button"><a href="/signup">Confirm <i class="fa-solid fa-square-check"></i></a></button> &nbsp; &nbsp;
         {% endif %}
         &nbsp;<button type="button" class="box2" onclick="asd()">Cancel <i class="fa-solid fa-xmark"></i></button>
     </div>
     {% endfor %}
+   
 {% endblock %}
     <!-- Footer -->
