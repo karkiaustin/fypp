@@ -67,7 +67,7 @@ class vehicle(models.Model):
     vehicle_description = models.TextField(blank=False, max_length=200, default="")
     vehicle_specification = models.TextField(blank=False, max_length=200, default="")
     price_per_day = models.IntegerField()
-    vehicle_owner=models.ForeignKey(User, related_name="vehicle_owner", on_delete=models.CASCADE, null=True)
+    vehicle_owner = models.ForeignKey(User, related_name="vehicle_owner", on_delete=models.CASCADE, null=True)
     Company_name = models.CharField(max_length=300)
     Company_contact = models.CharField(max_length=300)
     Vehicle_number = models.CharField(max_length=300)
@@ -138,13 +138,14 @@ class bulkbidding(models.Model):
     Phone = models.CharField(max_length=300)
     requirements = models.TextField(blank=False, max_length=200)
     date = models.DateField()
-    is_accepted= models.BooleanField(default=False)
+    is_accepted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.Phone
 
+
 class comment(models.Model):
-    bid=models.ForeignKey(bulkbidding,on_delete=models.CASCADE, related_name='bid_comments', null=True)
-    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_comments', null=True)
-    text=models.TextField()
-    is_accepted=models.BooleanField(default=False)
+    bid = models.ForeignKey(bulkbidding, on_delete=models.CASCADE, related_name='bid_comments', null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comments', null=True)
+    text = models.TextField()
+    is_accepted = models.BooleanField(default=False)
