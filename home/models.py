@@ -84,27 +84,21 @@ class vehicle(models.Model):
 
 
 class checkout(models.Model):
-    name = models.CharField(max_length=300)
-    slug = models.CharField(max_length=500, unique=True)
+    name = models.CharField(max_length=300, null=True)
     vehicle_description = models.ForeignKey(vehicle, on_delete=models.CASCADE)
-    First_name = models.CharField(max_length=300)
-    Last_name = models.CharField(max_length=300)
-    email = models.EmailField()
-    Phone = models.CharField(max_length=300)
-    city = models.CharField(max_length=300)
-    tole_name = models.CharField(max_length=300)
-    Address = models.CharField(max_length=300)
-    street = models.CharField(max_length=300)
-    House_number = models.CharField(max_length=300, blank=True)
-    Vehicle_name = models.CharField(max_length=300)
-    Star_date = models.DateField()
-    total_days = models.IntegerField()
-    cost_per_day = models.IntegerField()
-    total_cost = models.IntegerField()
-    conformation = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Booking_User", null=True)
+    Phone = models.CharField(max_length=300, null=True)
+    Address = models.CharField(max_length=300, null=True)
+    Start_date = models.DateField(null=True)
+    total_days = models.IntegerField(null=True)
+    is_ordered = models.BooleanField(default=False)
+    is_completed = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
+    
+    def total_cost(self):
+        return self.total_days * self.vehicle_description.price_per_day
 
 
 class staff(models.Model):

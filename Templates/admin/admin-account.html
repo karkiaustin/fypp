@@ -28,28 +28,28 @@
                     <h2 class="center">
                         Account Update:
                     </h2><br>
-                    <form method="post" class="formm">
+                    <form method="post" action="/updateprofile/" class="formm">
+                        {% csrf_token %}
                         &nbsp;<label for="c">First Name :
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input
                             class="cc" type="text" name="fname" id="c" placeholder="First Name" required><br><br>
                         &nbsp;<label for="d">Last Name :
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input
                             class="cc" type="text" name="lname" id="d" placeholder="Last Name" required><br><br>
-                        &nbsp;<label for="e">Email :
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input
-                            class="cc" type="email" name="Email" id="e" placeholder="Email" required><br><br>
-
-                        &nbsp;<label for="a">Username
-                            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;</label><input class="cc" type="text" autofocus name="name" id="a"
-                            autofocus="" placeholder="User Name" required ><br><br>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button class="box2"><strong>Submit <i
+                                        class="fa-solid fa-square-check"></i></strong></button><strong> <button class="box2"
+                                    type="reset"><strong>Reset <i class="fa-solid fa-power-off"></i></strong></button>
+                                </form>
+                                <form method="post" action="/updatepw/" class="formm">
+                                    {% csrf_token %}
                         &nbsp;<label for="b">New Password : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="cc"
-                            type="password" placeholder="New Password" name="password" id="b" required>&nbsp;
+                            type="password" placeholder="New Password" name="newpw" id="b" required>&nbsp;
                         <button class="a box1" type="button" onclick="togglePasswordVisibility('overr')">
                             SHOW
                         </button><br><br>
                         <label for="bb">Confirm Password : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="cc"
-                            type="password" placeholder="Conform Password" name="cpassword" id="bb" required>
+                            type="password" placeholder="Confirm Password" name="conpw" id="bb" required>
 
                         <br><br>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -65,7 +65,7 @@
                 <div class="order">
                     <table class="tabb bod" border="15px" cellspacing="0">
                         <tr>
-                            <td>No.</td>
+                           
                             <td>Vehicle</td>
                             <td>Start Date</td>
                             <td>No. of Days</td>
@@ -73,24 +73,27 @@
                             <td>Action</td>
                             
                         </tr>
+                        {% for i in vehicles%}
                         <tr>
-                            <td>1.</td>
-                            <td>Vehicle Name</td>
-                            <td>07/08/2022</td>
-                            <td>4</td>
-                            <td>900</td>
-                            <td><button class="box2" type="button">In progress</button><br><br>&nbsp;<button class="box1" type="button">Cancel</button></td>
                            
+                            <td>{{i.vehicle_description.name}}</td>
+                            <td>{{i.Start_date}}</td>
+                            <td>{{i.total_days}}</td>
+                            <td>{{i.total_cost}}</td>
+                            <td>
+                                {%if i.is_completed%}
+                                <button class="box2" type="button">Completed</button>
+                                {%else%}
+                                <form action="/complete/{{ i.id }}/" method="post">
+                                    {% csrf_token %}
+                                <button class="box2" type="submit">In Progress</button>
+                                </form>
+                                {%endif%}
+                                 
+                            </td>
+                                
                         </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>Vehicle Name</td>
-                            <td>07/08/2022</td>
-                            <td>8</td>
-                            <td>700</td>
-                            <td><button class="box2" type="button">In progress</button><br><br>&nbsp;<button class="box1" type="button">Cancel</button></td>
-                           
-                        </tr>
+                        {%endfor%}
                     </table>
                 </div>
             </div>

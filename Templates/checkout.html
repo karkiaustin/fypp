@@ -7,43 +7,31 @@
             <div class="boxxx">
                 <h1>Shipping Address:</h1><br>
                 <form method="POST" class="formm">
-                    First Name*: &nbsp;&nbsp;<input type="text" name="F_name" class="cc" placeholder="First Name" required><br><br>
-                    Last Name*: &nbsp;&nbsp;<input type="text" name="L_name" class="cc" placeholder="Last Name" required><br><br>
-                    Email*: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email"
-                        class="cc" placeholder="Email" name="E_mail" required><br><br>
+                    {% csrf_token %}
+                    Name*: &nbsp;&nbsp;<input type="text" name="name" class="cc" placeholder="Name" required><br><br>
                     Phone*: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
-                        class="cc" placeholder="P_hone"
+                        class="cc" placeholder="phone"
                         oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" maxlength="10"
                         title="Please enter a 10-digit phone number" name="phone" required><br><br>
-                    City*:
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                        type="text" class="cc" name="C_ity" placeholder="City" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    Address*: <input type="text" name="A_ddress" class="cc" placeholder="Address" required>&nbsp;&nbsp;
-                    Street*: <input type="text" name="S_treet" class="cc" placeholder="Street" required><br><br>
-                    Tole Name*: &nbsp;<input type="text" class="cc" name="T_ole" placeholder="Tole Name"
-                        required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    House Number: <input type="text" name="H_ouse" class="cc" placeholder="House Number"><br><br>
+                    Address*: <input type="text" name="address" class="cc" placeholder="Address" required>&nbsp;&nbsp;
                     Payment: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="P-ayment" class="cc" value="Cash On Delivery"
                         readonly> <br><br><br>
-                    <button type="submit" class="box3">Place Order!! <i
-                            class="fa-solid fa-truck"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="reset" class="box3">Reset <i class="fa-solid fa-power-off"></i></button>
-
-                    <div class="hhh">
+                    
                         <h1>Cart Total:</h1><br>
-                        <p class="pp">Vehicle Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name</p><br>
                         <p class="pp">Start
                             Date*:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                                type="date" name="D_ate" required></p><br>
+                                type="date" name="sdate" required></p><br>
                         <p class="pp">Total
                             Days*:&nbsp;&nbsp;&nbsp;&nbsp;<input type="number"
-                                max="20" min="1" name="D_ays" required></p><br>
-                        <p class="pp">Cost Per Day:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs cost</p><br>
+                                max="20" min="1" name="days" required></p><br>
+                        <p class="pp">Cost Per Day:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{data.vehicle_description.price_per_day}}</p><br>
 
                         <hr><br>
                         <p class="pp">Total
-                            Cost:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs 5000</p><br>
-
+                            Cost:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.vehicle_description.price_per_day}}</p><br>
+                            <button type="submit" class="box3">Place Order!! <i
+                                class="fa-solid fa-truck"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="reset" class="box3">Reset <i class="fa-solid fa-power-off"></i></button>
                     </div>
                 </form>
             </div>
