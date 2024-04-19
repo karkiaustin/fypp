@@ -317,7 +317,7 @@ class StartCheckout(Base):
 class CheckOutVehicle(Base):
     def get(self, request):
         checkoutdata = checkout.objects.filter(user=self.request.user)
-        data = checkout.objects.get(user=self.request.user, is_ordered=False)
+        data = checkout.objects.filter(user=self.request.user, is_ordered=False).first
         return render(request, "checkout.html", locals())
 
     def post(self, request):
