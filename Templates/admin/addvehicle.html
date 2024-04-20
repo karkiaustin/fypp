@@ -41,4 +41,45 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="backkkk">
+    <div class="conboxxx">
+      <h1><center>Registered Vehicles:</center></h1>
+      <br /><br />
+      <div class="mid">
+        <div class="order">
+          <table class="tabb bod" border="15px" cellspacing="0">
+            <tr>
+              <td>Vehicle Name</td>
+              <td>Image</td>
+              <td>Price</td>
+              <td>Vehicle Number</td>
+              <td>Engine_type</td>
+              <td>Category</td>
+              <td>Type</td>
+            </tr>
+            {% for vehicle in vehicles %}
+            <tr>
+              <td>{{vehicle.name}}</td>
+              <td>
+                <img
+                  src="{{vehicle.image}}"
+                  alt=""
+                  width="130px"
+                  height="130px"
+                />
+              </td>
+              <td>{{vehicle.price_per_day}}</td>
+              <td>{{vehicle.Vehicel_number}}</td>
+              <td>{{vehicle.engine_type}}</td>
+              <td>{{vehicle.category}}</td>
+              <td>{{vehicle.engine_type}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

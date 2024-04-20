@@ -92,6 +92,7 @@ def bidconfirm(request, id):
 def AddVehicle(request):
     if request.method == "POST":
         form = VehicleForm(request.POST, request.FILES)
+        
         if form.is_valid():
             vehicle_instance = form.save(commit=False)
             vehicle_instance.vehicle_owner = request.user
@@ -99,7 +100,8 @@ def AddVehicle(request):
             return redirect("/addvehicle")
     else:
         form = VehicleForm()
-    return render(request, "admin/addvehicle.html", {"form": form})
+        vehicles = vehicle.objects.filter(vehicle_owner=request.user)
+    return render(request, "admin/addvehicle.html", {"form": form,"vehicles":vehicles})
 
 
 class booking(Base):
